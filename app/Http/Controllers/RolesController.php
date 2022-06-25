@@ -146,7 +146,7 @@ class RolesController extends Controller
         //
         $roleItems = RoleItems::where('deleted_at', null)->get();
         $obj = Roles::find($request->id);
-
+//1
         $output = [
             "roleItems" =>json_encode($roleItems),
             "roles" =>json_encode($obj),
