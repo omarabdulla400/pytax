@@ -149,7 +149,7 @@ class RolesController extends Controller
         $output = [
             "roleItems" =>json_encode($roleItems),
             "roles" =>json_encode($obj),
-            
+            //a
         ];
         if ($obj !=null) {
             return json_encode($output);
