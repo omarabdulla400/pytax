@@ -1,46 +1,154 @@
+@include('components.head')
 
-@include('components.header')
-<body class="vertical  light  rtl">
-    
-    <div class="wrapper">
+<body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+    <!-- [ Pre-loader ] End -->
     @include('components.navbar')
-        <main role="main" class="main-content">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="row">
-                           
-                            <div class="col-md-6 col-xl-3 mb-4">
-                                <div class="card shadow border-0">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-3 text-center">
-                                                <span class="circle circle-sm bg-primary">
-                                                    <i class="fe fe-16 fe-users text-white mb-0"></i>
-                                                </span>
+
+
+    <!-- [ Header ] start -->
+    @include('components.header')
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ breadcrumb ] start -->
+                            <div class="page-header">
+                                <div class="page-block">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ breadcrumb ] end -->
+                            <!-- [ Main Content ] start -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-8">
+                                                    <h4 class="text-c-yellow">$30200</h4>
+                                                    <h6 class="text-muted m-b-0">{{ __('language.balance') }}</h6>
+                                                </div>
+                                                <div class="col-4 text-end">
+                                                    <i class="feather icon-bar-chart-2 f-28"></i>
+                                                </div>
                                             </div>
-                                            <div class="col pr-0">
-                                                <p class="small text-muted mb-0" >بەکارهێنەرەکان</p>
-                                                <span class="h3 mb-0" id="admin_users">0</span>
+                                        </div>
+                                        <div class="card-footer bg-c-yellow">
+                                            <div class="row align-items-center">
+                                                <div class="col-9">
+                                                    <p class="text-white m-b-0"></p>
+                                                </div>
+                                                <div class="col-3 text-end">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-8">
+                                                    <h4 class="text-c-green">290+</h4>
+                                                    <h6 class="text-muted m-b-0">{{ __('language.minutes') }}</h6>
+                                                </div>
+                                                <div class="col-4 text-end">
+                                                    <i class="feather icon-mic f-28"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-c-green">
+                                            <div class="row align-items-center">
+                                                <div class="col-9">
+                                                    <p class="text-white m-b-0"></p>
+                                                </div>
+                                                <div class="col-3 text-end">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-8">
+                                                    <h4 class="text-c-red">145</h4>
+                                                    <h6 class="text-muted m-b-0">{{ __('language.calls') }}</h6>
+                                                </div>
+                                                <div class="col-4 text-end">
+                                                    <i class="feather icon-phone f-28"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-c-red">
+                                            <div class="row align-items-center">
+                                                <div class="col-9">
+
+                                                </div>
+                                                <div class="col-3 text-end">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-8">
+                                                    <h4 class="text-c-blue">500</h4>
+                                                    <h6 class="text-muted m-b-0">{{ __('language.reacharing') }}</h6>
+                                                </div>
+                                                <div class="col-4 text-end">
+                                                    <i class="feather icon-rotate-ccw f-28"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-c-blue">
+                                            <div class="row align-items-center">
+                                                <div class="col-9">
+
+                                                </div>
+                                                <div class="col-3 text-end">
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- end section -->
-                        
-                        <!-- charts-->
-                       
+
+                        </div>
                     </div>
-                </div> <!-- .row -->
-            </div> <!-- .container-fluid -->
-           
-        </main> <!-- main -->
-    </div> <!-- .wrapper -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     @include('components.footer')
-    </body>
-    <script>
-    getDashboardData();
-    
-    </script>
+
+
+</body>
+
 </html>

@@ -1,6 +1,8 @@
 <?php
 return [
     "appTitle" => "پەیمانگای پایتەخت",
+    'navigation' => 'گەشتکردن',
+    'dashboard' => 'داشبۆرد',
     "notification" => "ئاگادارکردنەوەکان",
     "profile" => "پەڕەی کەسەی",
     "settings" => "سیتێنگ",

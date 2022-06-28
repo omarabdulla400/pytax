@@ -26,6 +26,7 @@ use App\Http\Controllers\RolesController;
 
 use App\Http\Controllers\RoleNamesController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Cookie;
 
 Route::POST('/userLogin', [AuthController::class, 'login']);
 Route::get('/login', function () {
