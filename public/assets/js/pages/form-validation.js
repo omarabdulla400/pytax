@@ -68,7 +68,6 @@ $(document).ready(function() {
                     required: true
                 },
             },
-
             // Errors //
 
             errorPlacement: function errorPlacement(error, element) {

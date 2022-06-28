@@ -32,7 +32,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (!Auth::attempt(['email' => $request->login_email, 'password' => $request->login_password])) {
             $message = [
                 "status" => 403,
             ];

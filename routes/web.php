@@ -27,7 +27,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RoleNamesController;
 use App\Http\Controllers\AuthController;
 
-Route::get('/userLogin', [AuthController::class, 'login']);
+Route::POST('/userLogin', [AuthController::class, 'login']);
 Route::get('/login', function () {
     return view('login');
 });
