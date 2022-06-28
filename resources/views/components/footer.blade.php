@@ -11,7 +11,7 @@
 <script src="{{ asset('assets/js/plugins/sweetalert.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/jquery.validate.min.js') }}"></script>
 
-
+<script src="{{ asset('assets/js/pages/roleNames/roleNames.js') }}"></script>
 {{-- <script src="{{ asset('assets/js/pages/roles/roles.js') }}"></script>
 <script src="{{ asset('assets/js/pages/roleGroups/roleGroups.js') }}"></script>
 <script src="{{ asset('assets/js/pages/customers/customers.js') }}"></script>
