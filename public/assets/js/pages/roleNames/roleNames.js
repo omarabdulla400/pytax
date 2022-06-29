@@ -67,28 +67,20 @@ function roleNamesEdit(id) {
     document.getElementById('roleNames_name_kr_update').value = obj['name_kr']
     document.getElementById('roleNames_name_ar_update').value = obj['name_ar']
     document.getElementById('roleNames_name_en_update').value = obj['name_en']
-    // document.getElementById('roleNames_view_update').checked = obj['viewData']
-    // document.getElementById('roleNames_add_update').checked = obj['addData']
-    // document.getElementById('roleNames_update_update').checked = obj['updateData']
-    // document.getElementById('roleNames_filter_update').checked = obj['filterData']
-    // document.getElementById('roleNames_extract_update').checked = obj['extractData']
-    // document.getElementById('roleNames_delete_update').checked = obj['deleteData']
-
     $('#updateRoleNamesModal').modal('show')
   })
 }
 function roleNamesRemove(id) {
-  Swal.fire({
+
+  swal({
     title: 'ئایا دڵنیایت',
     text: 'ناتوانێت ئەم زانیاریە بگەڕێنیتەوە!',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'بەڵی بیسڕەوە',
-    cancelButtonText: 'داختسن',
-  }).then((result) => {
-    if (result.isConfirmed) {
+    buttons: ['داختسن', 'بەڵی بیسڕەوە'],
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
       $.ajax({
         method: 'POST',
         headers: {
@@ -107,6 +99,7 @@ function roleNamesRemove(id) {
       })
     }
   })
+  
 }
 
 $('#update-roleNames-form').submit(function (event) {

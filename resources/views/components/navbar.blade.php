@@ -35,11 +35,19 @@
                                   class="feather icon-home"></i></span><span
                               class="pcoded-mtext">{{ __('language.dashboard') }}</span></a>
                   </li>
-                 
-                  <li class="nav-item"><a href="{{ url('/roleNames') }}" class="nav-link "><span class="pcoded-micon"><i
-                                  class="feather icon-filter"></i></span><span
-                              class="pcoded-mtext">{{ __('language.roleNames') }}</span></a>
+
+                  <li class="nav-item pcoded-hasmenu">
+                      <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon"><i
+                                  class="feather icon-layout"></i></span><span class="pcoded-mtext">{{ __('language.administration') }}</span><span class="ripple ripple-animate"
+                              style="height: 210px; width: 210px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(70, 128, 255); opacity: 0.4; top: -77.5px; left: 17px;"></span></a>
+                      <ul class="pcoded-submenu" style="display: none;">
+
+                          <li><a href="{{ url('/roleNames') }}">{{ __('language.roleNames') }}</a></li>
+
+                      </ul>
                   </li>
+
+                
               </ul>
           </div>
       </div>
