@@ -67,6 +67,7 @@ function roleNamesEdit(id) {
     document.getElementById('roleNames_name_kr_update').value = obj['name_kr']
     document.getElementById('roleNames_name_ar_update').value = obj['name_ar']
     document.getElementById('roleNames_name_en_update').value = obj['name_en']
+    document.getElementById('roleNames_page_update').value = obj['page']
     $('#updateRoleNamesModal').modal('show')
   })
 }

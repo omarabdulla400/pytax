@@ -142,6 +142,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link pl-3" href="/studyStatuss"><span class="ml-1 item-text">
+                                {{ __('language.studyStatuss') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link pl-3" href="/educationTypes"><span class="ml-1 item-text">
                                 {{ __('language.educationTypes') }}</span>
                         </a>

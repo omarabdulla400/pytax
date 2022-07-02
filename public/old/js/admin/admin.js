@@ -1,6 +1,7 @@
 var oldEmail = "";
 var oldPassowrd = "";
 var adminID = "";
+
 function create_admin_datatable() {
     $("#dataTable-admin").DataTable().destroy();
     $("#dataTable-admin").DataTable({
@@ -101,22 +102,21 @@ function adminEdit(id) {
             document.getElementById("admin_password_update").value = obj["password"];
             setSelection('#admin_role_update', obj["role"], '/getRolesAllData', 'educationLevel')
             $("#updateAdminModal").modal("show");
+            alert(obj["password"])
         }
 
     });
 }
 function adminRemove(id) {
-    Swal.fire({
-        title: "ئایا دڵنیایت",
-        text: "ناتوانێت ئەم زانیاریە بگەڕێنیتەوە!",
-        icon: "warning",
+    swal({
+        title: 'ئایا دڵنیایت',
+        text: 'ناتوانێت ئەم زانیاریە بگەڕێنیتەوە!',
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "بەڵی بیسڕەوە",
-        cancelButtonText: "داختسن",
-    }).then((result) => {
-        if (result.isConfirmed) {
+        buttons: ['داختسن', 'بەڵی بیسڕەوە'],
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
             $.ajax({
                 type: "POST",
                 headers: {

@@ -73,6 +73,12 @@
                                                                             aria-label="Name: activate to sort column descending"
                                                                             style="width: 249.531px;">
                                                                             {{ __('language.name') }}</th>
+                                                                            <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.page') }}</th>
                                                                         <th class="sorting" tabindex="0"
                                                                             aria-controls="simpletable" rowspan="1"
                                                                             colspan="1"
@@ -135,6 +141,16 @@
                             </div>
 
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.page') }}</label>
+                                    <input type="number" class="form-control" name="roleNames_page" required
+                                        >
+                                </div>
+                            </div>
+
+                        </div>
 
                 </div>
                 <div class="modal-footer">
@@ -182,6 +198,16 @@
                                     <label class="form-label">{{ __('language.name_en') }}</label>
                                     <input type="text" class="form-control" name="roleNames_name_en" required
                                         id="roleNames_name_en_update">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.page') }}</label>
+                                    <input type="number" class="form-control" name="roleNames_page" required
+                                        id="roleNames_page_update">
                                 </div>
                             </div>
 

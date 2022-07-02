@@ -36,6 +36,7 @@ class RoleNamesController extends Controller
 
                 $sub_array[] = '<tr><td>' . $count . '</td>';
                 $sub_array[] = '<td>' . $obj->name_kr . '</td>';
+                $sub_array[] = '<td>' . $obj->page . '</td>';
                $sub_array[] ='<td> <a  href="javascript:void(0);" onclick="roleNamesRemove(' .$obj->id .
                              ');"><i class="feather icon-trash-2 f-w-600 m-r-20  f-24 text-c-red"></i></a>
                              <a href="javascript:void(0);"  onclick="roleNamesEdit(' .$obj->id .
@@ -66,6 +67,7 @@ class RoleNamesController extends Controller
         $obj->name_kr = $request->roleNames_name_kr;
         $obj->name_ar = $request->roleNames_name_ar;
         $obj->name_en = $request->roleNames_name_en;
+        $obj->page = $request->roleNames_page;
         $obj->admin = Auth::User()->id;
       
         $result = $obj->save();
@@ -117,38 +119,8 @@ class RoleNamesController extends Controller
             $obj->name_kr = $request->roleNames_name_kr;
             $obj->name_ar = $request->roleNames_name_ar;
             $obj->name_en = $request->roleNames_name_en;
+            $obj->page = $request->roleNames_page;
             $obj->admin = Auth::User()->id;
-            // if ($request->has("roleNames_view")) {
-            //     $obj->viewData =1;
-            // }else{
-            //     $obj->viewData =0;
-            // }
-            // if ($request->has("roleNames_add")) {
-            //     $obj->addData = 1;
-            // }else{
-            //     $obj->addData =0;
-            // }
-            // if ($request->has("roleNames_update")) {
-            //     $obj->updateData = 1;
-            // }else{
-            //     $obj->updateData =0;
-            // }
-            // if ($request->has("roleNames_filter")) {
-            //     $obj->filterData = 1;
-            // }else{
-            //     $obj->filterData =0;
-            // }
-            
-            // if ($request->has("roleNames_extract")) {
-            //     $obj->extractData =1;
-            // }else{
-            //     $obj->extractData =0;
-            // }
-            // if ($request->has("roleNames_delete")) {
-            //     $obj->deleteData = 1;
-            // }else{
-            //     $obj->deleteData =0;
-            // }
             $obj->updated_at=Now();
             $result = $obj->save();
             if ($result) {

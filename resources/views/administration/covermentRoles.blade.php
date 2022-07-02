@@ -19,7 +19,6 @@
                                         <table class="table datatables" id="dataTable-covermentRoles">
                                             <thead>
                                                 <tr>
-
                                                     <th>#</th>
                                                     <th>{{__('language.number_role')}} </th>
                                                     <th>{{__('language.name')}} </th>
@@ -27,7 +26,6 @@
                                                     <th>{{__('language.mark')}} </th>
                                                     <th>{{__('language.ranges')}} </th>
                                                     <th>{{__('language.year')}} </th>
-
                                                     <th>{{__('language.action')}}</th>
                                                 </tr>
                                             </thead>

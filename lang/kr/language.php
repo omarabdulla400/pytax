@@ -191,7 +191,7 @@ return [
     "rolesTable"=>"خشتەی دەسەڵاتەکان",
     "addRoles"=>"زیاکردنی دەسەڵات",
     "updateRoles"=>"نوێکردنەوەی دەسەڵات",
-    "roleNames"=>"ناوی یاساکان",
+    "roleNames"=>"ناوی دەسەڵاتەکان",
     "roleNamesTable"=>"خشتەی ناوی دەسەڵاتەکان",
     "addRoleNames"=>"زیاکردنی ناوی دەسەڵات",
     "updateRoleNames"=>"نوێکردنەوەی ناوی دەسەڵات",
@@ -201,7 +201,9 @@ return [
     'add' => 'زیادکردن',
     'save' => 'خەزنکردن',
     'cancel' => 'داخستن',
-    "administration"=>'بەڕێوەبردن'
+    "administration"=>'بەڕێوەبردن',
+    "page"=>'پەڕە',
+    "collage"=>'کۆلێژ'
 
 ]
 

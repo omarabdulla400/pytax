@@ -201,7 +201,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/storeSemesters', [SemestersController::class, 'store']);
         Route::post('/destroySemesters', [SemestersController::class, 'destroy']);
         Route::post('/updateSemesters', [SemestersController::class, 'update']);
-        Route::get('/showStudentResult', [StudentResultsController::class, 'showStudentResult']);
+        Route::get('/showStudentResult', [StudentResultsContRoleNameroller::class, 'showStudentResult']);
         Route::get('/getStudentResultShow', [StudentResultsController::class, 'getStudentResultShow']);
 
 

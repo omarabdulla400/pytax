@@ -4,7 +4,7 @@
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
         <a href="#!" class="b-brand">
             <!-- ========   change your logo hear   ============ -->
-            <img src="{{ asset('assetsa/images/logo.png') }}" alt="" class="logo">
+            {{-- <img src="{{ asset('assetsa/images/logo.png') }}" alt="" class="logo"> --}}
 
         </a>
         <a href="#!" class="mob-toggler">
@@ -30,7 +30,7 @@
                                 <img class="img-radius" src="{{ asset('assets/images/user/avatar-2.jpg') }}"
                                     alt="User-Profile-Image">
                             @endif
-                            <span>{{ Auth::User()->name }}</span>
+                            <span>{{ Auth::User()->email }}</span>
                             <a href="auth-signin.html" class="dud-logout" title="Logout">
                                 <i class="feather icon-log-out"></i>
                             </a>

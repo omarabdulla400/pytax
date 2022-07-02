@@ -39,28 +39,21 @@ class AdminsController extends Controller
                 $sub_array = [];
                 $sub_array[] = '<tr><td>' . $count . '</td>';
                 $sub_array[] = '<td>' . $obj->name . '</td>';
-                $sub_array[] = '<td>' . $obj->phone . '</td>';
                 $sub_array[] = '<td>' . $obj->email . '</td>';
+                $sub_array[] = '<td>' . $obj->phone . '</td>';
+                
                 $sub_array[] = '<td>' . $obj->adminRole()->first()->name_kr . '</td>';
-                $sub_array[] =
-                    '   <td><button class="btn btn-sm dropdown-toggle more-horizontal"
-                type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <span class="text-muted sr-only">Action</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" >
-                <a class="dropdown-item" href="javascript:void(0);" onclick="adminEdit(' .
-                    $obj->id .
-                    ');">' .
-                    __('language.update') .
-                    '</a>
-                <a class="dropdown-item" href="javascript:void(0);"  onclick="adminRemove(' .
-                    $obj->id .
-                    ');">' .
-                    __('language.delete') .
-                    '</a>
-            </div>
-        </td></tr>';
+                if( $obj->id==Auth::User()->accountId){
+                    $sub_array[] = '<td></td></tr>';
+                }else{
+                    $sub_array[] ='<td> <a  href="javascript:void(0);" onclick="adminRemove(' .$obj->id .
+                    ');"><i class="feather icon-trash-2 f-w-600 m-r-20  f-24 text-c-red"></i></a>
+                    <a href="javascript:void(0);"  onclick="adminEdit(' .$obj->id .
+                     ');"><i class="icon feather icon-edit f-w-600 f-24 m-r-20 m-l-20 text-c-green"></i></a>
+                    </td></tr>';
+                }
+                
+               
                 $data[] = $sub_array;
                 $count = $count + 1;
             }
@@ -157,12 +150,22 @@ class AdminsController extends Controller
             $obj->updated_at = Now();
             $result = $obj->save();
             if ($result) {
-                $objUser = User::where('id', $obj->id)->first();
-                $objUser->email = $request->admin_email;
-                if ($request->admin_password != $request->oldPassword) {
+                $objUser = User::where('accountId', $obj->id)->first();
+                if( $objUser==null){
+                    $objUser = new User();
+                    $objUser->email = $request->admin_email;
                     $objUser->password = Hash::make($request->admin_password);
+                    $objUser->accountId = $obj->id;
+                    $objUser->type = 1;
+                    $objUser->save();
+                }else{
+                    $objUser->email = $request->admin_email;
+                    if ($request->admin_password != $request->oldPassword) {
+                        $objUser->password = Hash::make($request->admin_password);
+                    }
+                    $objUser->save();
                 }
-                $objUser->save();
+              
                 return __('language.updatedSuccessfully');
             } else {
                 return __('language.error');

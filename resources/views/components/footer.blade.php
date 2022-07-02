@@ -10,11 +10,15 @@
 <script src="{{ asset('assets/js/plugins/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/sweetalert.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/jquery.validate.min.js') }}"></script>
-
+<script src="{{ asset('assets/js/pages/helper/helper.js') }}"></script>
 <script src="{{ asset('assets/js/pages/roleNames/roleNames.js') }}"></script>
-{{-- <script src="{{ asset('assets/js/pages/roles/roles.js') }}"></script>
-<script src="{{ asset('assets/js/pages/roleGroups/roleGroups.js') }}"></script>
-<script src="{{ asset('assets/js/pages/customers/customers.js') }}"></script>
-<script src="{{ asset('assets/js/pages/users/users.js') }}"></script>
-<script src="{{ asset('assets/js/pages/track/track.js') }}"></script>
-<script src="{{ asset('assets/js/pages/customerBlockSchedules/customerBlockSchedules.js') }}"></script> --}}
+<script src="{{ asset('assets/js/pages/roles/roles.js') }}"></script>
+<script src="{{ asset('assets/js/pages/admin/admin.js') }}"></script>
+<script src="{{ asset('assets/js/pages/department/department.js') }}"></script>
+<script src="{{ asset('assets/js/pages/semester/semester.js') }}"></script>
+<script src="{{ asset('assets/js/pages/educationLevel/educationLevel.js') }}"></script>
+<script src="{{ asset('assets/js/pages/educationType/educationType.js') }}"></script>
+<script src="{{ asset('assets/js/pages/stage/stage.js') }}"></script>
+<script src="{{ asset('assets/js/pages/year/year.js') }}"></script>
+<script src="{{ asset('assets/js/pages/studyStatus/studyStatus.js') }}"></script>
+<script src="{{ asset('assets/js/pages/studyType/studyType.js') }}"></script>

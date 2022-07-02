@@ -37,26 +37,11 @@ class EducationLevelsController extends Controller
                 $sub_array[] = '<tr><td>' . $count . '</td>';
                 $sub_array[] = '<td>' . $obj->name_kr . '</td>';
 
-
-                $sub_array[] =
-                    '   <td><button class="btn btn-sm dropdown-toggle more-horizontal"
-                type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <span class="text-muted sr-only">Action</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" >
-                <a class="dropdown-item" href="javascript:void(0);" onclick="educationLevelsEdit(' .
-                    $obj->id .
-                    ');">' .
-                    __('language.update') .
-                    '</a>
-                <a class="dropdown-item" href="javascript:void(0);"  onclick="educationLevelsRemove(' .
-                    $obj->id .
-                    ');">' .
-                    __('language.delete') .
-                    '</a>
-            </div>
-        </td></tr>';
+                $sub_array[] ='<td> <a  href="javascript:void(0);" onclick="educationLevelsRemove(' .$obj->id .
+                ');"><i class="feather icon-trash-2 f-w-600 m-r-20  f-24 text-c-red"></i></a>
+                <a href="javascript:void(0);"  onclick="educationLevelsEdit(' .$obj->id .
+                 ');"><i class="icon feather icon-edit f-w-600 f-24 m-r-20 m-l-20 text-c-green"></i></a>
+                </td></tr>';
                 $data[] = $sub_array;
                 $count = $count + 1;
             }

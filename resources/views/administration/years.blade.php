@@ -1,160 +1,232 @@
-@include('components.header')
+@include('components.head')
 
-<body class="vertical  light   rtl">
-    <div class="wrapper">
-        @include('components.navbar')
-        <main role="main" class="main-content">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <h2 class="mb-2 page-title">{{ __('language.yearsTable') }}</h2>
-                        <button educationYears="button" class="btn mb-2 btn-primary" data-toggle="modal"
-                            data-target="#addEducationYearsModal">{{ __('language.addYears') }}</button>
-                        <div class="row my-4">
-                            <!-- Small table -->
+<body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    @include('components.navbar')
+
+
+    <!-- [ Header ] start -->
+    @include('components.header')
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ breadcrumb ] start -->
+                            <div class="page-header">
+                                <div class="page-block">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ breadcrumb ] end -->
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <!-- Zero config table start -->
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>{{ __('language.educationYearTable') }}</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="dt-responsive table-responsive">
+                                                <div id="simpletable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <button type="button" class="btn btn-primary has-ripple"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#addEducationYearsModal">{{ __('language.add') }}<span
+                                                                    class="ripple ripple-animate"
+                                                                    style="height: 174.078px; width: 174.078px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(255, 255, 255); opacity: 0.4; top: -67.2185px; left: 16.969px;"></span></button>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="dataTable-educationYears"
+                                                                class="table table-striped table-bordered nowrap dataTable"
+                                                                aria-describedby="simpletable_info">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="sorting" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1"
+                                                                            aria-label="Position: activate to sort column ascending"
+                                                                            style="width: 167.969px;">
+                                                                            #</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.start') }}</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.end') }}</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.state') }}</th>
+
+                                                                        <th class="sorting" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1"
+                                                                            aria-label="Position: activate to sort column ascending"
+                                                                            style="width: 167.969px;">
+                                                                            {{ __('language.action') }}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addEducationYearsModal" class="modal fade" tabindex="-1" aria-labelledby="addEducationYearsModal1"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" educationYear="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('language.addYears') }}</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form id="add-educationYears-form" class="needs-validation was-validated">
+                        <div class="row">
                             <div class="col-md-12">
-                                <div class="card shadow">
-                                    <div class="card-body">
-                                        <!-- table -->
-                                        <table class="table datatables" id="dataTable-educationYears">
-                                            <thead>
-                                                <tr>
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.start') }}</label>
+                                    <input type="text" class="form-control" name="educationYears_start" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.end') }}</label>
+                                    <input type="number" class="form-control" name="educationYears_end" required>
+                                </div>
+                            </div>
+                        </div>
 
-                                                    <th>#</th>
-                                                    <th>{{ __('language.start') }} </th>
-                                                    <th>{{ __('language.end') }} </th>
-                                                    <th>{{ __('language.state') }} </th>
-                                                  
-                                                    <th>{{ __('language.action') }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.state') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="educationYears_state"
+                                        required>
+                                        <option value="1" selected>{{ __('language.active') }}</option>
+                                        <option value="2"> {{ __('language.unActive') }}</option>
+                                        <option value="3"> {{ __('language.archive') }}</option>
+
+                                    </select>
                                 </div>
-                            </div> <!-- simple table -->
-                        </div> <!-- end section -->
-                    </div> <!-- .col-12 -->
-                </div> <!-- .row -->
-            </div> <!-- .container-fluid -->
-            <div class="modal fade" id="addEducationYearsModal" tabindex="-1" role="dialog"
-                aria-labelledby="addeducationYearsModalLabel" aria-hidden="true">
-                <div class="modal-dialog " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addeducationYearsModalLabel">{{ __('language.addYears') }}
-                            </h5>
-                            <button educationYears="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            </div>
+
                         </div>
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate="" id="add-educationYears-form">
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-6">
-                                        <label for="validationCustom01">{{ __('language.start') }}</label>
-                                        <input type="number" class="form-control" id="educationYears_start"
-                                            name="educationYears_start" required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }} </div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-6">
-                                        <label for="validationCustom01">{{ __('language.end') }}</label>
-                                        <input type="number" class="form-control" id="educationYears_end"
-                                            name="educationYears_end" required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }} </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3" style="margin-top: 1%;">
-                                        <label for="example-multiselect">{{ __('language.state') }}</label>
-                                        <select id="educationYears_state" name="educationYears_state"
-                                            class="form-control" required="">
-                                            <option value="1" selected>{{ __('language.active') }}</option>
-                                            <option value="2"> {{ __('language.unActive') }}</option>
-                                            <option value="3"> {{ __('language.archive') }}</option>
-                                        </select>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }} </div>
-                                        <div class="invalid-feedback"> {{ __('language.selectOption') }}</div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button educationYears="button" class="btn mb-2 btn-secondary"
-                                data-dismiss="modal">{{ __('language.close') }}</button>
-                            <button educationYears="submit"
-                                class="btn mb-2 btn-primary">{{ __('language.add') }}</button>
-                        </div>
-                        </form>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary"
+                        data-bs-dismiss="modal">{{ __('language.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary has-ripple">{{ __('language.save') }}</button>
+                    </form>
                 </div>
             </div>
-            <!-- update -->
-            <div class="modal fade" id="updateEducationYearsModal" tabindex="-1" role="dialog"
-                aria-labelledby="addeducationYearsModalLabel" aria-hidden="true">
-                <div class="modal-dialog " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="updateeducationYearsModalLabel">
-                                {{ __('language.updateYears') }}</h5>
-                            <button educationYears="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate="" id="update-educationYears-form">
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-6">
-                                        <label for="validationCustom01">{{ __('language.start') }}</label>
-                                        <input type="number" class="form-control" id="educationYears_start_update"
-                                            name="educationYears_start" required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }} </div>
-                                    </div>
+        </div>
+    </div>
+
+
+    <div id="updateEducationYearsModal" class="modal fade" tabindex="-1" aria-labelledby="addEducationYearsModal1"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" educationYear="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('language.updateYears') }}</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form id="update-educationYears-form" class="needs-validation was-validated">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.start') }}</label>
+                                    <input type="number" class="form-control" name="educationYears_start" required
+                                        id="educationYears_start_update">
                                 </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-6">
-                                        <label for="validationCustom01">{{ __('language.end') }}</label>
-                                        <input type="number" class="form-control" id="educationYears_end_update"
-                                            name="educationYears_end" required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }} </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3" style="margin-top: 1%;">
-                                        <label for="example-multiselect">{{ __('language.state') }}</label>
-                                        <select id="educationYears_state_update" name="educationYears_state"
-                                            class="form-control" required="">
-                                            <option value="1">{{ __('language.active') }}</option>
-                                            <option value="2"> {{ __('language.unActive') }}</option>
-                                            <option value="3"> {{ __('language.archive') }}</option>
-                                        </select>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }} </div>
-                                        <div class="invalid-feedback"> {{ __('language.selectOption') }}</div>
-                                    </div>
-                                </div>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button educationYears="button" class="btn mb-2 btn-secondary"
-                                data-dismiss="modal">{{ __('language.close') }}</button>
-                            <button educationYears="submit"
-                                class="btn mb-2 btn-primary">{{ __('language.update') }}</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.end') }}</label>
+                                    <input type="text" class="form-control" name="educationYears_end" required
+                                        id="educationYears_end_update">
+                                </div>
+                            </div>
                         </div>
-                        </form>
-                    </div>
+                
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.state') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="educationYears_state"
+                                        id="educationYears_state_update" required>
+                                        <option value="1" >{{ __('language.active') }}</option>
+                                        <option value="2"> {{ __('language.unActive') }}</option>
+                                        <option value="3"> {{ __('language.archive') }}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary"
+                        data-bs-dismiss="modal">{{ __('language.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary has-ripple">{{ __('language.save') }}</button>
+                    </form>
                 </div>
             </div>
-        </main> <!-- main -->
-    </div> <!-- .wrapper -->
+        </div>
+    </div>
+
     @include('components.footer')
     <script>
-     
         create_educationYears_datatable();
     </script>
+
+</body>
+
+</html>

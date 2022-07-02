@@ -72,17 +72,16 @@ function semestersEdit(id) {
   })
 }
 function semestersRemove(id) {
-  Swal.fire({
+  
+  swal({
     title: 'ئایا دڵنیایت',
     text: 'ناتوانێت ئەم زانیاریە بگەڕێنیتەوە!',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'بەڵی بیسڕەوە',
-    cancelButtonText: 'داختسن',
-  }).then((result) => {
-    if (result.isConfirmed) {
+    buttons: ['داختسن', 'بەڵی بیسڕەوە'],
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
       $.ajax({
         method: 'POST',
         headers: {

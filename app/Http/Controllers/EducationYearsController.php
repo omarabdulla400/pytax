@@ -49,26 +49,11 @@ class EducationYearsController extends Controller
                 $sub_array[] = '<td>' . $obj->start . '</td>';
                 $sub_array[] = '<td>' . $obj->end . '</td>';
                 $sub_array[] = '<td>' . $state . '</td>';
-
-                $sub_array[] =
-                    '   <td><button class="btn btn-sm dropdown-toggle more-horizontal"
-                type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <span class="text-muted sr-only">Action</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" >
-                <a class="dropdown-item" href="javascript:void(0);" onclick="educationYearsEdit(' .
-                    $obj->id .
-                    ');">' .
-                    __('language.update') .
-                    '</a>
-                <a class="dropdown-item" href="javascript:void(0);"  onclick="educationYearsRemove(' .
-                    $obj->id .
-                    ');">' .
-                    __('language.delete') .
-                    '</a>
-            </div>
-        </td></tr>';
+                $sub_array[] ='<td> <a  href="javascript:void(0);" onclick="educationYearsRemove(' .$obj->id .
+                ');"><i class="feather icon-trash-2 f-w-600 m-r-20  f-24 text-c-red"></i></a>
+                <a href="javascript:void(0);"  onclick="educationYearsEdit(' .$obj->id .
+                 ');"><i class="icon feather icon-edit f-w-600 f-24 m-r-20 m-l-20 text-c-green"></i></a>
+                </td></tr>';
                 $data[] = $sub_array;
                 $count = $count + 1;
             }

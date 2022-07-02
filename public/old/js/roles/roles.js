@@ -1,4 +1,5 @@
 var rolesID = ''
+
 function create_roles_datatable() {
   $('#dataTable-roles').DataTable().destroy()
   $('#dataTable-roles').DataTable({
@@ -71,44 +72,77 @@ function rolesEdit(id) {
     document.getElementById('roles_name_en_update').value = roles['name_en']
 
     roleItems.forEach((element) => {
-     
-      if (document.getElementById(`roles_view_id_${element['roleName']}_update`)) {
-        if(element['viewData'] ==true){
+      document.getElementById(
+        `roles_view_id_${element['roleName']}_update`,
+      ).checked = false
+      document.getElementById(
+        `roles_add_id_${element['roleName']}_update`,
+      ).checked = false
+      document.getElementById(
+        `roles_updae_id_${element['roleName']}_update`,
+      ).checked = false
+
+      document.getElementById(
+        `roles_extract_id_${element['roleName']}_update`,
+      ).checked = false
+      document.getElementById(
+        `roles_delete_id_${element['roleName']}_update`,
+      ).checked = false
+
+      document.getElementById(
+        `roles_updae_id_${element['roleName']}_update`,
+      ).checked = false
+      if (
+        document.getElementById(`roles_view_id_${element['roleName']}_update`)
+      ) {
+        if (element['viewData'] == true) {
           document.getElementById(
             `roles_view_id_${element['roleName']}_update`,
           ).checked = true
         }
       }
-      if (document.getElementById(`roles_add_id_${element['roleName']}_update`)) {
-        if(element['addData'] ==true){
+      if (
+        document.getElementById(`roles_add_id_${element['roleName']}_update`)
+      ) {
+        if (element['addData'] == true) {
           document.getElementById(
             `roles_add_id_${element['roleName']}_update`,
           ).checked = true
         }
       }
-      if (document.getElementById(`roles_update_id_${element['roleName']}_update`)) {
-        if(element['updateData'] ==true){
+      if (
+        document.getElementById(`roles_update_id_${element['roleName']}_update`)
+      ) {
+        if (element['updateData'] == true) {
           document.getElementById(
             `roles_update_id_${element['roleName']}_update`,
           ).checked = true
         }
       }
-      if (document.getElementById(`roles_filter_id_${element['roleName']}_update`)) {
-        if(element['filterData'] ==true){
+      if (
+        document.getElementById(`roles_filter_id_${element['roleName']}_update`)
+      ) {
+        if (element['filterData'] == true) {
           document.getElementById(
             `roles_filter_id_${element['roleName']}_update`,
           ).checked = true
         }
       }
-      if (document.getElementById(`roles_extract_id_${element['roleName']}_update`)) {
-        if(element['extractData'] ==true){
+      if (
+        document.getElementById(
+          `roles_extract_id_${element['roleName']}_update`,
+        )
+      ) {
+        if (element['extractData'] == true) {
           document.getElementById(
             `roles_extract_id_${element['roleName']}_update`,
           ).checked = true
         }
       }
-      if (document.getElementById(`roles_delete_id_${element['roleName']}_update`)) {
-        if(element['deleteData'] ==true){
+      if (
+        document.getElementById(`roles_delete_id_${element['roleName']}_update`)
+      ) {
+        if (element['deleteData'] == true) {
           document.getElementById(
             `roles_delete_id_${element['roleName']}_update`,
           ).checked = true
@@ -120,17 +154,15 @@ function rolesEdit(id) {
   })
 }
 function rolesRemove(id) {
-  Swal.fire({
+  swal({
     title: 'ئایا دڵنیایت',
     text: 'ناتوانێت ئەم زانیاریە بگەڕێنیتەوە!',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'بەڵی بیسڕەوە',
-    cancelButtonText: 'داختسن',
-  }).then((result) => {
-    if (result.isConfirmed) {
+    buttons: ['داختسن', 'بەڵی بیسڕەوە'],
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
       $.ajax({
         method: 'POST',
         headers: {
@@ -179,11 +211,3 @@ $('#update-roles-form').submit(function (event) {
     })
   }
 })
-function stopCheck() {
-  alert('sds')
-  if (document.getElementById('myCheck').checked) {
-    document.getElementById('roles_stop_update').checked = false
-  } else {
-    document.getElementById('roles_stop_update').checked = true
-  }
-}

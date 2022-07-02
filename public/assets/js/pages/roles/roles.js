@@ -26,7 +26,100 @@ function create_roles_datatable() {
     },
   })
 }
+$('#add-roles-form').submit(function (event) {
+  event.preventDefault()
+  var form = $(this)[0]
+  var data = new FormData(form)
+  $.ajax({
+    method: 'POST',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    },
+    encroles: 'multipart/form-data',
+    url: '/storeRoles',
+    data: data,
+    processData: false,
+    contentType: false,
+    cache: false,
+    timeout: 600000,
+    error: function (data) {
+      server_error('Server: ' + data.status)
+    },
+  }).done(function (data) {
+    add_data_notification(data)
+    $('#addRolesModal').modal('hide')
+    create_roles_datatable()
+  })
+})
+function rolesEdit(id) {
+  rolesID = id
+  $.ajax({
+    url: '/getRolesData',
+    method: 'GET',
+    data: { id: id },
+    cache: true,
+    asyc: true,
+    error: function (data) {
+      server_error('Server: ' + data.status)
+    },
+  }).done(function (data) {
+    var obj = JSON.parse(data)
+    var roles = JSON.parse(obj['roles'])
+    var roleItems = JSON.parse(obj['roleItems'])
+    document.getElementById('roles_name_kr_update').value = roles['name_kr']
+    document.getElementById('roles_name_ar_update').value = roles['name_ar']
+    document.getElementById('roles_name_en_update').value = roles['name_en']
 
+    roleItems.forEach((element) => {
+      if (
+        document.getElementById(`roles_view_id_${element['roleName']}_update`)
+      ) {
+        document.getElementById(
+          `roles_view_id_${element['roleName']}_update`,
+        ).checked = element['viewData']
+      }
+      if (
+        document.getElementById(`roles_add_id_${element['roleName']}_update`)
+      ) {
+        document.getElementById(
+          `roles_add_id_${element['roleName']}_update`,
+        ).checked = element['addData']
+      }
+      if (
+        document.getElementById(`roles_update_id_${element['roleName']}_update`)
+      ) {
+        document.getElementById(
+          `roles_update_id_${element['roleName']}_update`,
+        ).checked = element['updateData']
+      }
+      if (
+        document.getElementById(`roles_filter_id_${element['roleName']}_update`)
+      ) {
+        document.getElementById(
+          `roles_filter_id_${element['roleName']}_update`,
+        ).checked = element['filterData']
+      }
+      if (
+        document.getElementById(
+          `roles_extract_id_${element['roleName']}_update`,
+        )
+      ) {
+        document.getElementById(
+          `roles_extract_id_${element['roleName']}_update`,
+        ).checked = element['extractData']
+      }
+      if (
+        document.getElementById(`roles_delete_id_${element['roleName']}_update`)
+      ) {
+        document.getElementById(
+          `roles_delete_id_${element['roleName']}_update`,
+        ).checked = element['deleteData']
+      }
+    })
+
+    $('#updateRolesModal').modal('show')
+  })
+}
 function rolesRemove(id) {
   swal({
     title: 'ئایا دڵنیایت',
@@ -56,56 +149,6 @@ function rolesRemove(id) {
     }
   })
 }
-
-$('#add-roles-form').submit(function (event) {
-  event.preventDefault()
-  var form = $(this)[0]
-  var data = new FormData(form)
-  if ($('#add-roles-form').valid()) {
-    $.ajax({
-      method: 'POST',
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-      },
-      encdepartments: 'multipart/form-data',
-      url: '/storeRole',
-      data: data,
-      processData: false,
-      contentType: false,
-      cache: false,
-      timeout: 600000,
-      error: function (data) {
-        server_error('Server: ' + data.status)
-      },
-    }).done(function (data) {
-      add_data_notification(data)
-      $('#addRolesModal').modal('hide')
-      create_roles_datatable()
-    })
-  }
-})
-
-
-function rolesEdit(id) {
-  rolesID = id
-  $.ajax({
-    url: '/getSingleRole',
-    method: 'GET',
-    data: { id: id },
-    cache: true,
-    asyc: true,
-    error: function (data) {
-      server_error('Server: ' + data.status)
-    },
-  }).done(function (data) {
-    var obj = JSON.parse(data)
-    document.getElementById('role_name_kr_update').value = obj['name_kr']
-    document.getElementById('role_name_ar_update').value = obj['name_ar']
-    document.getElementById('role_name_en_update').value = obj['name_en']
-    $('#updateRolesModal').modal('show')
-  })
-}
-
 
 $('#update-roles-form').submit(function (event) {
   event.preventDefault()
