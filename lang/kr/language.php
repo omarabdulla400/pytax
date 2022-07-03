@@ -203,7 +203,9 @@ return [
     'cancel' => 'داخستن',
     "administration"=>'بەڕێوەبردن',
     "page"=>'پەڕە',
-    "collage"=>'کۆلێژ'
+    "collage"=>'کۆلێژ',
+    "staff"=>'ستاف',
+    "settingStructure"=>'دانانی ستراکچەر'
 
 ]
 

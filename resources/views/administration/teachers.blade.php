@@ -1,256 +1,357 @@
-@include('components.header')
+@include('components.head')
 
-<body class="vertical  light   rtl">
-    <div class="wrapper">
-        @include('components.navbar')
-        <main role="main" class="main-content">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <h2 class="mb-2 page-title">{{ __('language.teacherTable') }} </h2>
-                        <button type="button" class="btn mb-2 btn-primary" data-toggle="modal"
-                            data-target="#addTeacherModal"> {{ __('language.addTeacher') }} </button>
-                        <div class="row my-4">
-                            <!-- Small table -->
+<body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    @include('components.navbar')
+
+
+    <!-- [ Header ] start -->
+    @include('components.header')
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ breadcrumb ] start -->
+                            <div class="page-header">
+                                <div class="page-block">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ breadcrumb ] end -->
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <!-- Zero config table start -->
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>{{ __('language.teacherTable') }}</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="dt-responsive table-responsive">
+                                                <div id="simpletable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <button type="button" class="btn btn-primary has-ripple"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#addTeacherModal">{{ __('language.add') }}<span
+                                                                    class="ripple ripple-animate"
+                                                                    style="height: 174.078px; width: 174.078px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(255, 255, 255); opacity: 0.4; top: -67.2185px; left: 16.969px;"></span>
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="dataTable-teacher"
+                                                                class="table table-striped table-bordered nowrap dataTable"
+                                                                aria-describedby="simpletable_info">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="sorting" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1"
+                                                                            aria-label="Position: activate to sort column ascending"
+                                                                            style="width: 167.969px;">
+                                                                            #</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.name') }}</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.phone') }}</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.email') }}</th>
+
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.role') }}</th>
+                                                                        <th class="sorting" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1"
+                                                                            aria-label="Position: activate to sort column ascending"
+                                                                            style="width: 167.969px;">
+                                                                            {{ __('language.action') }}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addTeacherModal" class="modal fade" tabindex="-1" aria-labelledby="addTeacherModal1"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" teacher="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('language.addTeacher') }}</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form id="add-teacher-form" class="needs-validation was-validated">
+                        <div class="row">
                             <div class="col-md-12">
-                                <div class="card shadow">
-                                    <div class="card-body">
-                                        <!-- table -->
-                                        <table class="table datatables" id="dataTable-teacher">
-                                            <thead>
-                                                <tr>
-
-                                                    <th>#</th>
-                                                    <th>{{ __('language.name') }} </th>
-                                                    <th>{{ __('language.phone') }}</th>
-                                                    <th>{{ __('language.email') }}</th>
-                                                    <th>{{ __('language.role') }}</th>
-
-                                                    <th>{{ __('language.action') }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.name_kr') }}</label>
+                                    <input type="text" class="form-control" name="teacher_name_kr" required>
                                 </div>
-                            </div> <!-- simple table -->
-                        </div> <!-- end section -->
-                    </div> <!-- .col-12 -->
-                </div> <!-- .row -->
-            </div> <!-- .container-fluid -->
-            <div class="modal fade" id="addTeacherModal" tabindex="-1" role="dialog"
-                aria-labelledby="addTeacherModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addTeacherModalLabel">{{ __('language.addTeacher') }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate="" id="add-teacher-form">
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">{{ __('language.name_kr') }}</label>
-                                        <input type="text" class="form-control" id="teacher_name_kr" name="teacher_name_kr"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">{{ __('language.name_ar') }}</label>
-                                        <input type="text" class="form-control" id="teacher_name_ar" name="teacher_name_ar"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">{{ __('language.name_en') }}</label>
-                                        <input type="text" class="form-control" id="teacher_name_en" name="teacher_name_en"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="validationCustom02">{{ __('language.phone') }}</label>
-                                        <input type="text" class="form-control" id="teacher_phone"
-                                            name="teacher_phone" maxlength="11" minlength="11" pattern=".{0}|.{11,}"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.phoneValidate') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="exampleInputEmail1">{{ __('language.email') }}</label>
-                                        <input type="email" class="form-control" name="teacher_email"
-                                            id="teacher_email" aria-describedby="emailHelp" required="">
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                        <div class="invalid-feedback"> {{ __('language.emailRequired') }}</div>
-
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label
-                                            for="example-multiselect">{{ __('language.selectEducationLevel') }}</label>
-                                        <select id="teacher_educationLevel" name="teacher_educationLevel"
-                                            class="form-control" required="">
-
-                                        </select>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                        <div class="invalid-feedback"> {{ __('language.educationLevelRequired') }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label
-                                            for="validationCustomTeachername">{{ __('language.password') }}</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="teacher_password"
-                                                id="teacher_password" minlength="8" aria-describedby="inputGroupPrepend"
-                                                required="">
-                                            <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                            <div class="invalid-feedback">{{ __('language.passwordRequired') }}
-                                            </div>
-                                        </div>
-                                    </div>
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.name_ar') }}</label>
+                                    <input type="text" class="form-control" name="teacher_name_ar" required>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="example-multiselect">{{ __('language.selectRole') }}</label>
-                                        <select id="teacher_role" name="teacher_role" class="form-control">
-
-                                        </select>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                        <div class="invalid-feedback"> {{ __('language.selectRoleRequired') }}</div>
-                                    </div>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.name_en') }}</label>
+                                    <input type="text" class="form-control" name="teacher_name_en" required>
                                 </div>
-                                <div class="custom-file mb-3">
-                                    <input type="file" id="teacher_image" name="teacher_image" class="custom-file-input"
-                                        required="" accept="image/x-png,image/gif,image/jpeg">
-                                    <label class="custom-file-label"
-                                        for="validatedCustomFile">{{ __('language.selectImage') }}</label>
-                                    <div class="invalid-feedback">{{ __('language.imageRequired') }}</div>
-                                    <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                </div>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn mb-2 btn-secondary"
-                                data-dismiss="modal">{{ __('language.close') }}</button>
-                            <button type="submit" class="btn mb-2 btn-primary">{{ __('language.add') }}</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.phone') }}</label>
+                                    <input type="text" class="form-control" name="teacher_phone" required
+                                        maxlength="11" minlength="11" pattern=".{0}|.{11,}">
+                                </div>
+                            </div>
                         </div>
-                        </form>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.email') }}</label>
+                                    <input type="email" class="form-control" name="teacher_email" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.password') }}</label>
+                                    <input type="password" class="form-control" name="teacher_password"
+                                        minlength="8" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.selectEducationLevel') }}</label>
+                                    <select class="form-control" aria-invalid="false" id="teacher_educationLevel" name="teacher_educationLevel" required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.selectRole') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="teacher_role" 
+                                    id="teacher_role"
+                                    required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.selectImage') }}</label>
+                                    <input type="file" name="teacher_image" class="form-control"
+                                        accept="image/x-png,image/gif,image/jpeg" required>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary"
+                        data-bs-dismiss="modal">{{ __('language.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary has-ripple">{{ __('language.save') }}</button>
+                    </form>
                 </div>
             </div>
-            <!-- update -->
-            <div class="modal fade" id="updateTeacherModal" tabindex="-1" role="dialog"
-                aria-labelledby="addTeacherModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="updateTeacherModalLabel">{{ __('language.updateTeacher') }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate="" id="update-teacher-form">
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">{{ __('language.name_kr') }}</label>
-                                        <input type="text" class="form-control" id="teacher_name_kr_update" name="teacher_name_kr"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">{{ __('language.name_ar') }}</label>
-                                        <input type="text" class="form-control" id="teacher_name_ar_update" name="teacher_name_ar"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">{{ __('language.name_en') }}</label>
-                                        <input type="text" class="form-control" id="teacher_name_en_update" name="teacher_name_en"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.nameRequired') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="validationCustom02">{{ __('language.phone') }}</label>
-                                        <input type="text" class="form-control" id="teacher_phone_update"
-                                            name="teacher_phone" maxlength="11" minlength="11" pattern=".{0}|.{11,}"
-                                            required="">
-                                        <div class="invalid-feedback"> {{ __('language.phoneValidate') }}</div>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="exampleInputEmail1">{{ __('language.email') }}</label>
-                                        <input type="email" class="form-control" name="teacher_email"
-                                            id="teacher_email_update" aria-describedby="emailHelp" required="">
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                        <div class="invalid-feedback"> {{ __('language.emailRequired') }}</div>
+        </div>
+    </div>
 
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label
-                                            for="example-multiselect">{{ __('language.selectEducationLevel') }}</label>
-                                        <select id="teacher_educationLevel_update" name="teacher_educationLevel"
-                                            class="form-control" required="">
+    <div id="updateTeacherModal" class="modal fade" tabindex="-1" aria-labelledby="updateTeacherModal1"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" teacher="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('language.updateTeacher') }}</h5>
 
-                                        </select>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                        <div class="invalid-feedback"> {{ __('language.educationLevelRequired') }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label
-                                            for="validationCustomTeachername">{{ __('language.password') }}</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="teacher_password"
-                                                id="teacher_password_update" minlength="8" aria-describedby="inputGroupPrepend"
-                                                required="">
-                                            <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                            <div class="invalid-feedback">{{ __('language.passwordRequired') }}
-                                            </div>
-                                        </div>
-                                    </div>
-
+                </div>
+                <div class="modal-body">
+                    <form id="update-teacher-form" class="needs-validation was-validated">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.name_kr') }}</label>
+                                    <input type="text" class="form-control" name="teacher_name_kr"
+                                    id="teacher_name_kr_update"
+                                    required>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="example-multiselect">{{ __('language.selectRole') }}</label>
-                                        <select id="teacher_role_update" name="teacher_role" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.name_ar') }}</label>
+                                    <input type="text" class="form-control" name="teacher_name_ar"
+                                    id="teacher_name_ar_update"
+                                    required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.name_en') }}</label>
+                                    <input type="text" class="form-control" name="teacher_name_en"
+                                    id="teacher_name_en_update"
+                                    required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.phone') }}</label>
+                                    <input type="text" class="form-control" name="teacher_phone"
+                                        id="teacher_phone_update" required maxlength="11" minlength="11"
+                                        pattern=".{0}|.{11,}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.email') }}</label>
+                                    <input type="email" class="form-control" name="teacher_email"
+                                        id="teacher_email_update" required>
+                                </div>
+                            </div>
 
-                                        </select>
-                                        <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                        <div class="invalid-feedback"> {{ __('language.selectRoleRequired') }}</div>
-                                    </div>
-                                </div>
-                                <div class="custom-file mb-3">
-                                    <input type="file" id="teacher_image_update" name="teacher_image" class="custom-file-input"
-                                       accept="image/x-png,image/gif,image/jpeg">
-                                    <label class="custom-file-label"
-                                        for="validatedCustomFile">{{ __('language.selectImage') }}</label>
-                                    <div class="invalid-feedback">{{ __('language.imageRequired') }}</div>
-                                    <div class="valid-feedback"> {{ __('language.correctInfo') }}</div>
-                                </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn mb-2 btn-secondary"
-                                data-dismiss="modal">{{ __('language.close') }}</button>
-                            <button type="submit" class="btn mb-2 btn-primary">{{ __('language.update') }}</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.password') }}</label>
+                                    <input type="password" class="form-control" name="teacher_password"
+                                        id="teacher_password_update" minlength="8" required>
+                                </div>
+                            </div>
+
                         </div>
-                        </form>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.selectEducationLevel') }}</label>
+                                    <select class="form-control" aria-invalid="false" id="teacher_educationLevel_update" name="teacher_educationLevel" required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.selectRole') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="teacher_role"   id="teacher_role_update"required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.selectImage') }}</label>
+                                    <input type="file" name="teacher_image" class="form-control"
+                                        accept="image/x-png,image/gif,image/jpeg">
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary"
+                        data-bs-dismiss="modal">{{ __('language.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary has-ripple">{{ __('language.save') }}</button>
+                    </form>
                 </div>
             </div>
-        </main> <!-- main -->
-    </div> <!-- .wrapper -->
+        </div>
+    </div>
+
+
     @include('components.footer')
     <script>
         create_teacher_datatable();
         setSelection('#teacher_educationLevel', "", '/getAllEducationLevel', 'educationLevel')
         setSelection('#teacher_role', "", '/getRolesAllData', 'educationLevel')
     </script>
+
+</body>
+
+</html>

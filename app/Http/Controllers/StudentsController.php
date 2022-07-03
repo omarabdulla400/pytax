@@ -17,20 +17,19 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $userToken =  Cookie::get('userToken');
-        if ( $userToken != false && Auth::user()) {
+        $userToken = Cookie::get('userToken');
+        if ($userToken != false && Auth::user()) {
             return view('administration.students');
-        }else{
+        } else {
             return view('login');
         }
-
     }
 
     public function getStudents(Request $request)
     {
         //
         $objs = Students::where('deleted_at', null)->get();
-        if ($objs !=null) {
+        if ($objs != null) {
             $data = [];
             $count = 1;
             foreach ($objs as $obj) {
@@ -41,26 +40,36 @@ class StudentsController extends Controller
                 $sub_array[] = '<td>' . $obj->phone . '</td>';
                 $sub_array[] = '<td>' . $obj->address . '</td>';
                 $sub_array[] = '<td>' . $obj->gender . '</td>';
-                $sub_array[] = '<td>' . $obj->department()->first()->name_kr . '</td>';
-                $sub_array[] = '<td>' . $obj->setStudentStages()->first()->stage()->first()->name_kr  . '</td>';
-
-                $sub_array[] = '<td>' .$obj->study_type()->first()->name_kr  . '</td>';
-                $sub_array[] = '<td>' . $obj->setStudentStages()->first()->study_status()->first()->name_kr  . '</td>';
                 $sub_array[] =
-                    '   <td><button class="btn btn-sm dropdown-toggle more-horizontal"
-                type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <span class="text-muted sr-only">Action</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" >
-                <a class="dropdown-item" href="javascript:void(0);" onclick="studentEdit(' .
+                    '<td>' . $obj->department()->first()->name_kr . '</td>';
+                $sub_array[] =
+                    '<td>' .
+                    $obj
+                        ->setStudentStages()
+                        ->first()
+                        ->stage()
+                        ->first()->name_kr .
+                    '</td>';
+
+                $sub_array[] =
+                    '<td>' . $obj->study_type()->first()->name_kr . '</td>';
+                $sub_array[] =
+                    '<td>' .
+                    $obj
+                        ->setStudentStages()
+                        ->first()
+                        ->study_status()
+                        ->first()->name_kr .
+                    '</td>';
+                $sub_array[] =
+                    '<td> <a  href="javascript:void(0);" onclick="studentRemove(' .
                     $obj->id .
-                    ');">نوێکردنەوە</a>
-                <a class="dropdown-item" href="javascript:void(0);"  onclick="studentRemove(' .
+                    ');"><i class="feather icon-trash-2 f-w-600 m-r-20  f-24 text-c-red"></i></a>
+                <a href="javascript:void(0);"  onclick="studentEdit(' .
                     $obj->id .
-                    ');">سڕینەوە</a>
-            </div>
-        </td></tr>';
+                    ');"><i class="icon feather icon-edit f-w-600 f-24 m-r-20 m-l-20 text-c-green"></i></a>
+                </td></tr>';
+
                 $data[] = $sub_array;
                 $count = $count + 1;
             }
@@ -94,7 +103,7 @@ class StudentsController extends Controller
         $obj->department = $request->student_department;
 
         $obj->study_type = $request->student_types;
-          $obj->admin = Auth::User()->id;
+        $obj->admin = Auth::User()->id;
         $result = $obj->save();
         if ($result) {
             $objSet = new SetStudentStages();
@@ -120,10 +129,31 @@ class StudentsController extends Controller
     {
         //
         $obj = Students::find($request->id);
-        $obj->setAttribute('stage', $obj->setStudentStages()->first()->stage()->first()->id);
-        $obj->setAttribute('study_status', $obj->setStudentStages()->first()->study_status()->first()->id);
-        $obj->setAttribute('education_years', $obj->setStudentStages()->first()->education_year()->first()->id);
-        if ($obj !=null) {
+        $obj->setAttribute(
+            'stage',
+            $obj
+                ->setStudentStages()
+                ->first()
+                ->stage()
+                ->first()->id
+        );
+        $obj->setAttribute(
+            'study_status',
+            $obj
+                ->setStudentStages()
+                ->first()
+                ->study_status()
+                ->first()->id
+        );
+        $obj->setAttribute(
+            'education_years',
+            $obj
+                ->setStudentStages()
+                ->first()
+                ->education_year()
+                ->first()->id
+        );
+        if ($obj != null) {
             return json_encode($obj);
         } else {
             return '';
@@ -142,7 +172,7 @@ class StudentsController extends Controller
         //
 
         $obj = Students::find($request->id);
-        if ($obj !=null) {
+        if ($obj != null) {
             $obj->code = $request->student_code;
             $obj->name_kr = $request->student_name_kr;
             $obj->name_ar = $request->student_name_ar;
@@ -158,7 +188,7 @@ class StudentsController extends Controller
             $obj->updated_at = Now();
             $result = $obj->save();
             if ($result) {
-                $objSet =$obj->setStudentStages()->first();
+                $objSet = $obj->setStudentStages()->first();
                 $objSet->student = $obj->id;
                 $objSet->stage = $request->student_stage;
                 $objSet->study_status = $request->student_statuses;
@@ -183,10 +213,10 @@ class StudentsController extends Controller
     {
         //
         $obj = Students::find($request->id);
-        if ($obj !=null) {
+        if ($obj != null) {
             $obj->deleted_at = Now();
             $result = $obj->save();
-            $objSet = SetStudentStages::where('student',$request->id)->first();
+            $objSet = SetStudentStages::where('student', $request->id)->first();
             $objSet->deleted_at = Now();
             $result = $objSet->save();
             if ($result) {
@@ -196,6 +226,4 @@ class StudentsController extends Controller
             }
         }
     }
-
-
 }

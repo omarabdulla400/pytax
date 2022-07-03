@@ -38,21 +38,48 @@
                   <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon"><i
                                 class="feather icon-layout"></i></span><span
-                            class="pcoded-mtext">{{ __('language.collage') }}</span><span
+                            class="pcoded-mtext">{{ __('language.settingStructure') }}</span><span
                             class="ripple ripple-animate"
                             style="height: 210px; width: 210px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(70, 128, 255); opacity: 0.4; top: -77.5px; left: 17px;"></span></a>
                     <ul class="pcoded-submenu" style="display: none;">
+                        <li><a href="{{ url('/setSubjects') }}">{{ __('language.setSubjects') }}</a></li>
+                        
 
-                        <li><a href="{{ url('/departments') }}">{{ __('language.departments') }}</a></li>
-                        <li><a href="{{ url('/stages') }}">{{ __('language.stages') }}</a></li>
-                        <li><a href="{{ url('/semester') }}">{{ __('language.semesters') }}</a></li>
-                        <li><a href="{{ url('/educationTypes') }}">{{ __('language.educationTypes') }}</a></li>
-                        <li><a href="{{ url('/studyStatuss') }}">{{ __('language.studyStatuss') }}</a></li>
-                        <li><a href="{{ url('/studyTypes') }}">{{ __('language.studyTypes') }}</a></li>
-                        <li><a href="{{ url('/educationLevels') }}">{{ __('language.educationLevels') }}</a></li>
-                        <li><a href="{{ url('/years') }}">{{ __('language.years') }}</a></li>
+
                     </ul>
                 </li>
+                  <li class="nav-item pcoded-hasmenu">
+                      <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon"><i
+                                  class="feather icon-layout"></i></span><span
+                              class="pcoded-mtext">{{ __('language.staff') }}</span><span
+                              class="ripple ripple-animate"
+                              style="height: 210px; width: 210px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(70, 128, 255); opacity: 0.4; top: -77.5px; left: 17px;"></span></a>
+                      <ul class="pcoded-submenu" style="display: none;">
+                          <li><a href="{{ url('/students') }}">{{ __('language.students') }}</a></li>
+                          <li><a href="{{ url('/teachers') }}">{{ __('language.teachers') }}</a></li>
+
+
+                      </ul>
+                  </li>
+                  <li class="nav-item pcoded-hasmenu">
+                      <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon"><i
+                                  class="feather icon-layout"></i></span><span
+                              class="pcoded-mtext">{{ __('language.collage') }}</span><span
+                              class="ripple ripple-animate"
+                              style="height: 210px; width: 210px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(70, 128, 255); opacity: 0.4; top: -77.5px; left: 17px;"></span></a>
+                      <ul class="pcoded-submenu" style="display: none;">
+                          <li><a href="{{ url('/covermentRole') }}">{{ __('language.covermentRole') }}</a></li>
+                          <li><a href="{{ url('/departments') }}">{{ __('language.departments') }}</a></li>
+                          <li><a href="{{ url('/stages') }}">{{ __('language.stages') }}</a></li>
+                          <li><a href="{{ url('/semester') }}">{{ __('language.semesters') }}</a></li>
+                          <li><a href="{{ url('/educationTypes') }}">{{ __('language.educationTypes') }}</a></li>
+                          <li><a href="{{ url('/studyStatuss') }}">{{ __('language.studyStatuss') }}</a></li>
+                          <li><a href="{{ url('/studyTypes') }}">{{ __('language.studyTypes') }}</a></li>
+                          <li><a href="{{ url('/educationLevels') }}">{{ __('language.educationLevels') }}</a>
+                          </li>
+                          <li><a href="{{ url('/years') }}">{{ __('language.years') }}</a></li>
+                      </ul>
+                  </li>
                   <li class="nav-item pcoded-hasmenu">
                       <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon"><i
                                   class="feather icon-layout"></i></span><span

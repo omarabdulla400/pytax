@@ -42,21 +42,15 @@ class TeachersController extends Controller
                 $sub_array[] = '<td>' . $obj->email . '</td>';
                 $sub_array[] = '<td>' . $obj->teacherRole()->first()->name_kr . '</td>';
 
-                $sub_array[] =
-                    '   <td><button class="btn btn-sm dropdown-toggle more-horizontal"
-                type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <span class="text-muted sr-only">Action</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" >
-                <a class="dropdown-item" href="javascript:void(0);" onclick="teacherEdit(' .
-                    $obj->id .
-                    ');">نوێکردنەوە</a>
-                <a class="dropdown-item" href="javascript:void(0);"  onclick="teacherRemove(' .
-                    $obj->id .
-                    ');">سڕینەوە</a>
-            </div>
-        </td></tr>';
+                if( $obj->id==Auth::User()->accountId && Auth::User()->type =2){
+                    $sub_array[] = '<td></td></tr>';
+                }else{
+                $sub_array[] ='<td> <a  href="javascript:void(0);" onclick="teacherRemove(' .$obj->id .
+                ');"><i class="feather icon-trash-2 f-w-600 m-r-20  f-24 text-c-red"></i></a>
+                <a href="javascript:void(0);"  onclick="teacherEdit(' .$obj->id .
+                 ');"><i class="icon feather icon-edit f-w-600 f-24 m-r-20 m-l-20 text-c-green"></i></a>
+                </td></tr>';
+                }
                 $data[] = $sub_array;
                 $count = $count + 1;
             }
@@ -162,13 +156,22 @@ class TeachersController extends Controller
             $result = $obj->save();
             if ($result) {
                 $objUser = User::where('id', $obj->id)->first();
-                $objUser->email = $request->teacher_email;
-                if ($request->teacher_password != $request->oldPassword) {
+                if( $objUser==null){
+                    $objUser = new User();
+                    $objUser->email = $request->teacher_email;
                     $objUser->password = Hash::make($request->teacher_password);
+                    $objUser->accountId = $obj->id;
+                    $objUser->type = 2;
+                    $objUser->save();
+                }else{
+                    $objUser->email = $request->teacher_email;
+                    if ($request->teacher_password != $request->oldPassword) {
+                        $objUser->password = Hash::make($request->teacher_password);
+                    }
+                    $objUser->type = 2;
+                    $objUser->save();
                 }
-                $objUser->accountId = $obj->id;
-                $objUser->type = 2;
-                $objUser->save();
+             
                 return __('language.updatedSuccessfully');
             } else {
                 return __('language.error');

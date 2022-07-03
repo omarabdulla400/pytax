@@ -22,3 +22,7 @@
 <script src="{{ asset('assets/js/pages/year/year.js') }}"></script>
 <script src="{{ asset('assets/js/pages/studyStatus/studyStatus.js') }}"></script>
 <script src="{{ asset('assets/js/pages/studyType/studyType.js') }}"></script>
+<script src="{{ asset('assets/js/pages/covermentRole/covermentRole.js') }}"></script>
+<script src="{{ asset('assets/js/pages/teacher/teacher.js') }}"></script>
+<script src="{{ asset('assets/js/pages/student/student.js') }}"></script>
+<script src="{{ asset('assets/js/pages/setSubject/setSubject.js') }}"></script>

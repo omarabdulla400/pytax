@@ -1,169 +1,283 @@
-@include('components.header')
+@include('components.head')
 
-<body class="vertical  light   rtl">
-    <div class="wrapper">
-        @include('components.navbar')
-        <main role="main" class="main-content">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <h2 class="mb-2 page-title">{{__('language.setSubjectTable')}}</h2>
-                        <button type="button" class="btn mb-2 btn-primary" data-toggle="modal"
-                            data-target="#addSetSubjectsModal">{{__('language.addSetSubject')}}</button>
-                        <div class="row my-4">
-                            <!-- Small table -->
+<body>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    @include('components.navbar')
+
+
+    <!-- [ Header ] start -->
+    @include('components.header')
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <!-- [ breadcrumb ] start -->
+                            <div class="page-header">
+                                <div class="page-block">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ breadcrumb ] end -->
+                            <!-- [ Main Content ] start -->
+                            <div class="row">
+                                <!-- Zero config table start -->
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>{{ __('language.setSubjectTable') }}</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="dt-responsive table-responsive">
+                                                <div id="simpletable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <button type="button" class="btn btn-primary has-ripple"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#addSetSubjectModal">{{ __('language.add') }}<span
+                                                                    class="ripple ripple-animate"
+                                                                    style="height: 174.078px; width: 174.078px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(255, 255, 255); opacity: 0.4; top: -67.2185px; left: 16.969px;"></span>
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="dataTable-setSubjects"
+                                                                class="table table-striped table-bordered nowrap dataTable"
+                                                                aria-describedby="simpletable_info">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="sorting" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1"
+                                                                            aria-label="Position: activate to sort column ascending"
+                                                                            style="width: 167.969px;">
+                                                                            #</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.subject') }}</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.department') }}</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.stage') }}</th>
+                                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1" aria-sort="ascending"
+                                                                            aria-label="Name: activate to sort column descending"
+                                                                            style="width: 249.531px;">
+                                                                            {{ __('language.teacher') }}</th>
+
+
+                                                                        <th class="sorting" tabindex="0"
+                                                                            aria-controls="simpletable" rowspan="1"
+                                                                            colspan="1"
+                                                                            aria-label="Position: activate to sort column ascending"
+                                                                            style="width: 167.969px;">
+                                                                            {{ __('language.action') }}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addSetSubjectModal" class="modal fade" tabindex="-1" aria-labelledby="addSetSubjectModal1"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" setSubject="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('language.addSetSubject') }}</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form id="add-setSubject-form" class="needs-validation was-validated">
+
+                        <div class="row">
                             <div class="col-md-12">
-                                <div class="card shadow">
-                                    <div class="card-body">
-                                        <!-- table -->
-                                        <table class="table datatables" id="dataTable-setSubjects">
-                                            <thead>
-                                                <tr>
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.department') }}</label>
+                                    <select class="form-control" aria-invalid="false" id="setSubjects_department"
+                                        name="setSubjects_department" required onchange="changeAndLoadSubjectsAdd()">
+                                        <option value="" hidden></option>
 
-                                                    <th>#</th>
-                                                    <th>{{__('language.subject')}} </th>
-                                                    <th>{{__('language.department')}} </th>
-                                                    <th>{{__('language.stage')}} </th>
-                                                    <th>{{__('language.teacher')}} </th>
-                                                    <th>{{__('language.action')}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    </select>
                                 </div>
-                            </div> <!-- simple table -->
-                        </div> <!-- end section -->
-                    </div> <!-- .col-12 -->
-                </div> <!-- .row -->
-            </div> <!-- .container-fluid -->
-            <div class="modal fade" id="addSetSubjectsModal" tabindex="-1" role="dialog" aria-labelledby="addsetSubjectsModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addsetSubjectsModalLabel">{{__('language.addSetSubject')}}</h5>
-                            <button setSubjects="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            </div>
+
                         </div>
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate="" id="add-setSubjects-form">                    
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.department')}}</label>
-                                        <select id="setSubjects_department" name="setSubjects_department" class="form-control" required="" onchange="changeAndLoadSubjectsAdd()">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.stage') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="setSubjects_stage"
+                                        id="setSubjects_stage" required onchange="changeAndLoadSubjectsAdd()">
+                                        <option value="" hidden></option>
+
+                                    </select>
                                 </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.stage')}}</label>
-                                        <select id="setSubjects_stage" name="setSubjects_stage" class="form-control" required="" onchange="changeAndLoadSubjectsAdd()">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.teacher')}}</label>
-                                        <select id="setSubjects_teacher" name="setSubjects_teacher" class="form-control" required="">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.subject')}}</label>
-                                        <select id="setSubjects_subject" name="setSubjects_subject" class="form-control" required="">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
-                                </div>                                
-                                
-                                
+                            </div>
+
                         </div>
-                        <div class="modal-footer">
-                            <button setSubjects="button" class="btn mb-2 btn-secondary" data-dismiss="modal">{{__('language.close')}}</button>
-                            <button setSubjects="submit" class="btn mb-2 btn-primary">{{__('language.add')}}</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.teacher') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="setSubjects_teacher"
+                                        id="setSubjects_teacher" required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
-                        </form>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.subject') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="setSubjects_subject"
+                                        id="setSubjects_subject" required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary"
+                        data-bs-dismiss="modal">{{ __('language.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary has-ripple">{{ __('language.save') }}</button>
+                    </form>
                 </div>
             </div>
-            <!-- update -->
-            <div class="modal fade" id="updateSetSubjectsModal" tabindex="-1" role="dialog" aria-labelledby="addsetSubjectsModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog " role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="updatesetSubjectsModalLabel">{{__('language.updateSetSubject')}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate="" id="update-setSubjects-form">
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.department')}}</label>
-                                        <select id="setSubjects_department_update" name="setSubjects_department" class="form-control" required="" onchange="changeAndLoadSubjectsUpdate()">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
+        </div>
+    </div>
+
+    <div id="updateSetSubjectModal" class="modal fade" tabindex="-1" aria-labelledby="updateSetSubjectModal1"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" setSubject="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('language.updateSetSubject') }}</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form id="update-setSubject-form" class="needs-validation was-validated">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.department') }}</label>
+                                    <select class="form-control" aria-invalid="false"
+                                        id="setSubjects_department_update" name="setSubjects_department" required onchange="changeAndLoadSubjectsUpdate()">
+                                        <option value="" hidden></option>
+
+                                    </select>
                                 </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.stage')}}</label>
-                                        <select id="setSubjects_stage_update" name="setSubjects_stage" class="form-control" required="" onchange="changeAndLoadSubjectsUpdate()">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.teacher')}}</label>
-                                        <select id="setSubjects_teacher_update" name="setSubjects_teacher" class="form-control" required="">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin-top: 1%;">
-                                    <div class="col-md-12 mb-3" >
-                                        <label for="example-multiselect">{{__('language.subject')}}</label>
-                                        <select id="setSubjects_subject_update" name="setSubjects_subject" class="form-control" required="">
-                                        </select>
-                                        <div class="valid-feedback"> {{__('language.correctInfo')}} </div>
-                                        <div class="invalid-feedback"> {{__('language.selectOption')}}</div>
-                                    </div>
-                                </div>                                
-                              
-                                
+                            </div>
+
                         </div>
-                        <div class="modal-footer">
-                            <button setSubjects="button" class="btn mb-2 btn-secondary" data-dismiss="modal">{{__('language.close')}}</button>
-                            <button setSubjects="submit" class="btn mb-2 btn-primary">{{__('language.update')}}</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.stage') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="setSubjects_stage"
+                                        id="setSubjects_stage_update" required onchange="changeAndLoadSubjectsUpdate()">
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
-                        </form>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.teacher') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="setSubjects_teacher"
+                                        id="setSubjects_teacher_update" required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group fill">
+                                    <label class="form-label">{{ __('language.subject') }}</label>
+                                    <select class="form-control" aria-invalid="false" name="setSubjects_subject"
+                                        id="setSubjects_subject_update" required>
+                                        <option value="" hidden></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary"
+                        data-bs-dismiss="modal">{{ __('language.cancel') }}</button>
+                    <button type="submit" class="btn btn-primary has-ripple">{{ __('language.save') }}</button>
+                    </form>
                 </div>
             </div>
-        </main> <!-- main -->
-    </div> <!-- .wrapper -->
+        </div>
+    </div>
+
+
     @include('components.footer')
     <script>
-    create_setSubjects_datatable();
-    setSelection('#setSubjects_department', "", '/getDepartmentsAllData','departments')
-    setSelection('#setSubjects_stage', "", '/getStageAllData','stage')
-    setSelection('#setSubjects_teacher', "", '/getTeachersAllData','teacher')
-   
+        create_setSubjects_datatable();
+        setSelection('#setSubjects_department', "", '/getDepartmentsAllData', 'departments')
+        setSelection('#setSubjects_stage', "", '/getStageAllData', 'stage')
+        setSelection('#setSubjects_teacher', "", '/getTeachersAllData', 'teacher')
     </script>
+
+</body>
+
+</html>
